@@ -41,6 +41,10 @@
     {
       "type": "composer",
       "url": "https://repo.magento.com/"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:EaDesgin/magento2-slider-banner.git"
     }
 
   ]
