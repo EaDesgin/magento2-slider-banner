@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Eadesigndev\Slider\Api\Data\SliderItemInterface" type="Eadesigndev\Slider\Model\SliderItem" />
+    <virtualType name="SliderItemGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Eadesigndev\Slider\Model\ResourceModel\SliderItem\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">eadesigndev_slider_items</argument>
+            <argument name="resourceModel" xsi:type="string">Eadesigndev\Slider\Model\ResourceModel\SliderItem</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Eadesigndev\Slider\Api\Data\SliderInterface" type="Eadesigndev\Slider\Model\Slider" />
+    <virtualType name="SliderGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Eadesigndev\Slider\Model\ResourceModel\Slider\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">eadesigndev_slider</argument>
+            <argument name="resourceModel" xsi:type="string">Eadesigndev\Slider\Model\ResourceModel\Slider</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ctslider_slider_listing_data_source" xsi:type="string">Eadesigndev\Slider\Model\ResourceModel\Slider\Grid\Collection</item>
+                <item name="ctslider_slideritem_listing_data_source" xsi:type="string">Eadesigndev\Slider\Model\ResourceModel\SliderItem\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
