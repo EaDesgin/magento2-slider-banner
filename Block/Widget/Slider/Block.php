@@ -69,6 +69,7 @@ class Block extends Template implements \Magento\Widget\Block\BlockInterface
         $sliderId = $this->getData('slider_id');
         $collection = $this->_sliderItemCollectionFactory->create()
             ->addFieldToFilter('slider_id', $sliderId)
+            ->setOrder('slider_id','desc')
         ;
         $items = $collection->load();
         return $items;
